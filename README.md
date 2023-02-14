@@ -43,7 +43,7 @@ docker-compose up -d \
 4. (初回起動のみ) PHPパッケージをインストールします
 ```bash
 docker exec php \
-  composer install 
+  /bin/bash -c "composer install && composer dumpautoload"
 ```
 
 5. php artisanを使用してコンソール処理を起動します(AI分析のリクエスト成功パターン)
