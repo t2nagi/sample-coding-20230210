@@ -10,25 +10,25 @@
 # 動作確認手順
 
 ## 環境構築
-以下を実行する環境にインストールする。
+以下を実行する環境にインストールする
  * Git
  * Docker ※ 最新バージョン
  * Docker-Compose ※ 最新バージョン
 
 ## 確認手順
-1. プロジェクトをgithubからCloneします。
+1. プロジェクトをgithubからCloneします
 ```bash
 $ git clone 
 ```
-2. プロジェクトディレクトリへ移動します。
+2. プロジェクトディレクトリへ移動します
 ```bash
 $ cd ./sample-coding-20230210
 ```
-3. docker-composeでコンテナを起動します。
+3. docker-composeでコンテナを起動します
 ```bash
 $ docker-compose up -d
 $ docker-compose logs -f
-# logでコンテナの起動を確認します。
+# logでコンテナの起動を確認します
 # ---------------------------
 # api-mock      | INFO:     Uvicorn running on http://0.0.0.0:80 (Press CTRL+C to quit)
 # api-mock      | INFO:     Started reloader process [40] using WatchFiles
@@ -38,23 +38,23 @@ $ docker-compose logs -f
 # ※ ここまで完了
 ```
 
-4. (初回起動のみ) PHPパッケージのインストールします。
+4. (初回起動のみ) PHPパッケージをインストールします
 ```bash
 $ docker exec php \
   composer install 
 ```
 
-5. artisanで使用してコンソール処理を起動します。(AI分析のリクエスト成功パターン)
+5. php artisanを使用してコンソール処理を起動します(AI分析のリクエスト成功パターン)
 ```bash
 $ docker exec php \
   php artisan command:image:analyse /volume/success_img.png
 ```
-6. artisanで使用してコンソール処理を起動します。(AI分析のリクエスト失敗パターン)
+6. php artisanを使用してコンソール処理を起動します(AI分析のリクエスト失敗パターン)
 ```bash
 $ docker exec php \
   php artisan command:image:analyse /volume/failure_img.png
 ```
-7. テーブルの内容を確認します。
+7. テーブルの内容を確認します
 ```bash
 $ docker exec mysql \
   mysql -Dproblem -e "select * from ai_analysis_logs;"
