@@ -18,7 +18,7 @@
 ## 確認手順
 1. プロジェクトをgithubからCloneします
 ```bash
-$ git clone 
+$ git clone https://github.com/t2nagi/sample-coding-20230210.git
 ```
 2. プロジェクトディレクトリへ移動します
 ```bash
