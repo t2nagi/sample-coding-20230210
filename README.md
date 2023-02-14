@@ -18,16 +18,18 @@
 ## 確認手順
 1. プロジェクトをgithubからCloneします
 ```bash
-$ git clone https://github.com/t2nagi/sample-coding-20230210.git
+git clone https://github.com/t2nagi/sample-coding-20230210.git
 ```
 2. プロジェクトディレクトリへ移動します
 ```bash
-$ cd ./sample-coding-20230210
+cd ./sample-coding-20230210
 ```
 3. docker-composeでコンテナを起動します
 ```bash
-$ docker-compose up -d
-$ docker-compose logs -f
+docker-compose up -d \
+&& docker-compose logs -f
+```
+```bash
 # logでコンテナの起動を確認します
 # ---------------------------
 # api-mock      | INFO:     Uvicorn running on http://0.0.0.0:80 (Press CTRL+C to quit)
@@ -40,23 +42,23 @@ $ docker-compose logs -f
 
 4. (初回起動のみ) PHPパッケージをインストールします
 ```bash
-$ docker exec php \
+docker exec php \
   composer install 
 ```
 
 5. php artisanを使用してコンソール処理を起動します(AI分析のリクエスト成功パターン)
 ```bash
-$ docker exec php \
+docker exec php \
   php artisan command:image:analyse /volume/success_img.png
 ```
 6. php artisanを使用してコンソール処理を起動します(AI分析のリクエスト失敗パターン)
 ```bash
-$ docker exec php \
+docker exec php \
   php artisan command:image:analyse /volume/failure_img.png
 ```
 7. テーブルの内容を確認します
 ```bash
-$ docker exec mysql \
+docker exec mysql \
   mysql -Dproblem -e "select * from ai_analysis_logs;"
 ```
 
@@ -130,6 +132,6 @@ sample-coding-20230210
 # テスト
  phpコードのテスト実行
 ```bash
-$ docker exec php \
+docker exec php \
   php artisan test 
 ```
